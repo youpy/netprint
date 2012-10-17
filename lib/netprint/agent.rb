@@ -81,7 +81,7 @@ module Netprint
     end
 
     def expand_url(params)
-      Addressable::Template.new('https://www.printing.ne.jp/cgi-bin/mn.cgi{?i,p,s,c,m}').
+      Addressable::Template.new('https://www.printing.ne.jp/cgi-bin/mn.cgi?{-join|&|i,p,s,c,m}').
         expand(params)
     end
 
