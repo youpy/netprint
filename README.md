@@ -1,6 +1,6 @@
 # Netprint
 
-TODO: Write a gem description
+A library to upload file to netprint(https://www.printing.ne.jp/)
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+n = Netprint::Agent.new(userid, password)
+n.login
+
+registration_code = n.upload('/path/to/file.pdf')
+```
 
 ## Contributing
 
