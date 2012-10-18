@@ -4,6 +4,7 @@ require 'mechanize'
 
 require 'netprint/version'
 require 'netprint/agent'
+require 'netprint/url'
 require 'netprint/error'
 
 module Netprint
