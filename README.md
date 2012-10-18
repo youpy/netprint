@@ -37,8 +37,8 @@ n.upload('/path/to/file.pdf', {
   # Netprint::PAPER_SIZE::L
   :paper_size  => Netprint::PAPER_SIZE::B4,
 
-  # Netprint::COLOR::SELECT_WHEN_PRINT(default)
-  # Netprint::COLOR::BW
+  # Netprint::COLOR::SELECT_WHEN_PRINT
+  # Netprint::COLOR::BW(default)
   # Netprint::COLOR::COLOR
   :color       => Netprint::COLOR::BW,
 
