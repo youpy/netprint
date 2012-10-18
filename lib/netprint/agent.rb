@@ -16,7 +16,7 @@ module Netprint
 
     def login
       page        = mechanize.get(login_url)
-      @session_id = page.links[0].href.match(/s=(\w+)/)[1]
+      @session_id = page.links[0].href.match(/s=([^&]+)/)[1]
     end
 
     def upload(filename)
