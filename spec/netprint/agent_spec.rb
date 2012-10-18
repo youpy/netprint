@@ -4,11 +4,10 @@ include Netprint
 
 describe Agent do
   before do
-    unless ENV['NETPRINT_USERID'] && ENV['NETPRINT_PASSWORD']
-      raise 'set environment variable NETPRINT_USERID and NETPRINT_PASSWORD before running spec'
-    end
+    @agent = Agent.new('user_id', 'password')
 
-    @agent = Agent.new(ENV['NETPRINT_USERID'], ENV['NETPRINT_PASSWORD'])
+    stub_request(:get, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?i=user_id&p=password').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list.html')).read)
   end
 
   it 'should login' do
@@ -20,6 +19,13 @@ describe Agent do
   end
 
   it 'should upload' do
+    stub_request(:get, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?c=0&m=1&s=qwertyuiopoiuytrewq').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../upload.html')).read)
+    stub_request(:post, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?c=0&m=1&s=qwertyuiopoiuytrewq').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list.html')).read)
+    stub_request(:get, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?c=0&m=0&s=qwertyuiopoiuytrewq').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list.html')).read)
+
     filename = File.expand_path(File.dirname(__FILE__) + '/../foo.pdf')
     @agent.login
 
