@@ -18,3 +18,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+RSpec::Matchers.define :be_checked do |name, value|
+  match do |form|
+    radiobutton = Object.new
+    radiobutton.should_receive(:check)
+
+    form.should_receive(:radiobutton_with).with(:name => name, :value => value).and_return(radiobutton)
+  end
+end

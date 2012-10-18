@@ -19,8 +19,10 @@ module Netprint
       @session_id = page.links[0].href.match(/s=([^&]+)/)[1]
     end
 
-    def upload(filename)
+    def upload(filename, options = {})
       raise 'not logged in' unless login?
+
+      options = Options.new(options)
 
       Dir.mktmpdir do |dir|
         upload_filename  = (Pathname(dir) + ([Time.now.to_f.to_s, File.basename(filename)].join('_'))).to_s
@@ -29,11 +31,7 @@ module Netprint
         page = mechanize.get(url.upload)
         page = page.form_with(:name => 'uploadform') do |form|
           form.file_uploads.first.file_name = upload_filename
-          form['papersize']    = '0'
-          form['color']        = '0'
-          form['number']       = '0'
-          form['secretcodesw'] = '0'
-          form['mailsw']       = '0'
+          options.apply(form)
         end.submit
 
         raise UploadError if page.search('//img[@src="/img/icn_error.jpg"]').size == 1

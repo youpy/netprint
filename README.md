@@ -25,6 +25,29 @@ n.login
 registration_code = n.upload('/path/to/file.pdf')
 ```
 
+### Upload Options
+
+```ruby
+n.upload('/path/to/file.pdf', {
+
+  # Netprint::PAPER_SIZE::A3
+  # Netprint::PAPER_SIZE::A4(default)
+  # Netprint::PAPER_SIZE::B4
+  # Netprint::PAPER_SIZE::B5
+  # Netprint::PAPER_SIZE::L
+  :paper_size  => Netprint::PAPER_SIZE::B4,
+
+  # Netprint::COLOR::SELECT_WHEN_PRINT(default)
+  # Netprint::COLOR::BW
+  # Netprint::COLOR::COLOR
+  :color       => Netprint::COLOR::BW,
+
+  :secret_code => '1234',
+  :email       => 'foo@example.com'
+})
+```
+
+
 ## Contributing
 
 1. Fork it
