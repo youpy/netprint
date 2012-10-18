@@ -1,5 +1,4 @@
 require 'addressable/template'
-require 'addressable/uri'
 require 'mechanize'
 
 require 'netprint/version'
