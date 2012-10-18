@@ -1,6 +1,6 @@
 # Netprint
 
-A library to upload file to netprint(https://www.printing.ne.jp/)
+A library to use netprint(https://www.printing.ne.jp/)
 
 ## Installation
 
