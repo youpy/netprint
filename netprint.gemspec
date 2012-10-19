@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Netprint::VERSION
 
   gem.add_development_dependency('rspec', ['~> 2.8.0'])
+  gem.add_development_dependency('rake')
   gem.add_development_dependency('netprint')
   gem.add_development_dependency('webmock')
   gem.add_dependency('mechanize', '2.5.1')
