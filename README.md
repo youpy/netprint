@@ -1,4 +1,4 @@
-# Netprint  {<img src="https://secure.travis-ci.org/youpy/netprint.png" />}[http://travis-ci.org/youpy/netprint]
+# Netprint  [![Build Status](https://secure.travis-ci.org/youpy/netprint.png)](http://secure.travis-ci.org/youpy/netprint)
 
 A library to use netprint(https://www.printing.ne.jp/)
 
