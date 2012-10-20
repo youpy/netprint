@@ -51,7 +51,7 @@ module Netprint
 
       loop do
         page = mechanize.get(url.list)
-        _, registered_name, status = page.search('//tr[@bgcolor="#CFCFE6"][1]/td')
+        _, registered_name, status = page.search('//tr[@bgcolor="#CFCFE6" or @bgcolor="#ff6666"][1]/td')
 
         if status.text  =~ /^[0-9A-Z]{8}+$/
           code = status.text

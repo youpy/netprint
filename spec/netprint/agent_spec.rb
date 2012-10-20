@@ -32,4 +32,20 @@ describe Agent do
     code = @agent.upload(filename)
     code.should match(/^[0-9A-Z]{8}$/)
   end
+
+  it 'should handle registration error' do
+    stub_request(:get, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?c=0&m=1&s=qwertyuiopoiuytrewq').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../upload.html')).read)
+    stub_request(:post, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?c=0&m=1&s=qwertyuiopoiuytrewq').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list.html')).read)
+    stub_request(:get, 'https://www.printing.ne.jp/cgi-bin/mn.cgi?c=0&m=0&s=qwertyuiopoiuytrewq').
+      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../error.html')).read)
+
+    filename = File.expand_path(File.dirname(__FILE__) + '/../foo.pdf')
+    @agent.login
+
+    lambda {
+      @agent.upload(filename)
+    }.should raise_error(RegistrationError)
+  end
 end
