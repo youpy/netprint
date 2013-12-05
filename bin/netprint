@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'netprint'
+require 'docopt'
+
+program_name = File.basename($0)
+doc =<<-EOS
+Usage:
+  #{program_name} [--user=<userid:password>] [--email=<email>] [--secret=<secret>] <filename>
+  #{program_name} -h | --help
+
+Options:
+  -h --help                    Show this screen.
+  -v --version                 Show version information.
+  -u --user=<userid:password>  User account. if not specified, use ENV['NETPRINT_(USERID|PASSWORD)']
+  -e --email=<email>           Email address to notify
+  -s --secret=<secret>         Secret code
+EOS
+
+begin
+  options          = Docopt::docopt(doc, :version => Netprint::VERSION)
+  userid, password = options['--user'].split(':') if options['--user']
+  netprint         = Netprint::Agent.new(
+    userid   || ENV['NETPRINT_USERID'],
+    password || ENV['NETPRINT_PASSWORD'])
+
+  netprint.login
+  code = netprint.upload(options['<filename>'],
+    :email       => options['--email'] || ENV['NETPRINT_EMAIL'],
+    :secret_code => options['--secret'])
+
+  puts code
+rescue Docopt::Exit => e
+  puts e.message
+end
