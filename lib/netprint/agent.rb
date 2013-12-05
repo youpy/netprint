@@ -26,7 +26,11 @@ module Netprint
       options = Options.new(options)
 
       Dir.mktmpdir do |dir|
-        upload_filename  = (Pathname(dir) + ([Time.now.to_f.to_s, Digest::MD5.hexdigest(filename).to_s].join('_'))).to_s
+        upload_filename  = (Pathname(dir) + ([
+              Time.now.to_f.to_s,
+              Digest::MD5.hexdigest(filename).to_s,
+              File.basename(filename).gsub(/[^\w]+/, '') + File.extname(filename)
+            ].join('_'))).to_s
         cp filename, upload_filename
 
         page = mechanize.get(url.upload)
