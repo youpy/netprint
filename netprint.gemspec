@@ -9,8 +9,8 @@ Gem::Specification.new do |gem|
   gem.homepage      = ""
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files         = `git ls-files`.split("\n")
-  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.files         = `git ls-files -z`.split("\0")
+  gem.test_files    = `git ls-files -z -- {test,spec,features}/*`.split("\0")
   gem.name          = "netprint"
   gem.require_paths = ["lib"]
   gem.version       = Netprint::VERSION
