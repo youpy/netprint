@@ -47,6 +47,21 @@ n.upload('/path/to/file.pdf', {
 })
 ```
 
+### CLI
+
+```
+$ netprint --help
+Usage:
+  netprint [--user=<userid:password>] [--email=<email>] [--secret=<secret>] <filename>
+  netprint -h | --help
+
+Options:
+  -h --help                    Show this screen.
+  -v --version                 Show version information.
+  -u --user=<userid:password>  User account. If not specified, ENV['NETPRINT_(USERID|PASSWORD)'] is used.
+  -e --email=<email>           Email address to notify. If not specified, ENV['NETPRINT_EMAIL'] is used.
+  -s --secret=<secret>         Secret code.
+```
 
 ## Contributing
 
