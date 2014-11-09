@@ -27,6 +27,7 @@ begin
   netprint.login
   code = netprint.upload(options['<filename>'],
     :email       => options['--email'] || ENV['NETPRINT_EMAIL'],
+    :color       => Netprint::COLOR::SELECT_WHEN_PRINT,
     :secret_code => options['--secret'])
 
   puts code
