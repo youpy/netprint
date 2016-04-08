@@ -33,4 +33,8 @@ begin
   puts code
 rescue Docopt::Exit => e
   puts e.message
+rescue Netprint::UploadError => e
+  abort '%s: %s' % [$0, e.message]
+rescue Netprint::RegistrationError => e
+  abort '%s: An registration error occured' % $0
 end
