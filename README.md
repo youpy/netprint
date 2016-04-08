@@ -1,6 +1,6 @@
 # Netprint  [![Build Status](https://secure.travis-ci.org/youpy/netprint.png)](http://secure.travis-ci.org/youpy/netprint)
 
-A library to use netprint(https://www.printing.ne.jp/)
+A library and command line tool for using [netprint](https://www.printing.ne.jp/) 
 
 ## Installation
 
