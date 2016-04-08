@@ -119,7 +119,7 @@ describe Agent do
 
       lambda {
         @agent.upload(filename)
-      }.should raise_error(UploadError)
+      }.should raise_error(UploadError, 'error message')
     end
   end
 

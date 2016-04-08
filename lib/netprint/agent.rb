@@ -45,7 +45,11 @@ module Netprint
         options.apply(form)
         @page = form.submit(form.button_with(name: 'update-ow-btn'))
 
-        raise UploadError if @page.search('//ul[@id="svErrMsg"]/li').size == 1
+        errors = @page.search('//ul[@id="svErrMsg"]/li')
+
+        unless errors.empty?
+          raise UploadError.new(errors.first.text)
+        end
 
         get_code
       end
