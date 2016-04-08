@@ -14,7 +14,7 @@ module Netprint
   end
 
   module CODE_TYPE
-    ALNUM = '0'
-    NUM   = '1'
+    ALNUM = '1'
+    NUM   = '2'
   end
 end

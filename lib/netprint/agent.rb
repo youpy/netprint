@@ -13,15 +13,22 @@ module Netprint
     def initialize(userid, password)
       @userid   = userid
       @password = password
+      @page = nil
     end
 
     def login
-      page        = mechanize.get(url.login)
-      @session_id = page.links[0].href.match(/s=([^&]+)/)[1]
+      @page = mechanize.get('https://www.printing.ne.jp/usr/web/NPCM0010.seam')
+      form = @page.form_with(name: 'NPCM0010')
+      form.field_with(name: 'NPCM0010:userIdOrMailads-txt').value = @userid
+      form.field_with(name: 'NPCM0010:password-pwd').value = @password
+      @page = form.submit(form.button_with(name: 'NPCM0010:login-btn'))
     end
 
     def upload(filename, options = {})
       raise 'not logged in' unless login?
+
+      form = @page.form_with(name: 'NPFL0010')
+      @page = form.submit(form.button_with(name: 'create-document'))
 
       options = Options.new(options)
 
@@ -33,35 +40,40 @@ module Netprint
             ].join('_'))).to_s
         cp filename, upload_filename
 
-        page = mechanize.get(url.upload)
-        page = page.form_with(:name => 'uploadform') do |form|
-          form.file_uploads.first.file_name = upload_filename
-          options.apply(form)
-        end.submit
+        form = @page.form_with(name: 'NPFL0020')
+        form.file_uploads.first.file_name = upload_filename
+        options.apply(form)
+        @page = form.submit(form.button_with(name: 'update-ow-btn'))
 
-        raise UploadError if page.search('//img[@src="/img/icn_error.jpg"]').size == 1
+        raise UploadError if @page.search('//ul[@id="svErrMsg"]/li').size == 1
 
         get_code
       end
     end
 
     def login?
-      @session_id
+      @page && @page.code == '200'
     end
 
     private
+
+    def reload
+      form = @page.form_with(name: 'NPFL0010')
+      @page = form.submit(form.button_with(name: 'reload'))
+    end
 
     def get_code
       code = nil
 
       loop do
-        page = mechanize.get(url.list)
-        _, registered_name, status = page.search('//tr[@bgcolor="#CFCFE6" or @bgcolor="#ff6666"][1]/td')
+        reload
 
-        if status.text  =~ /^[0-9A-Z]{8}+$/
+        _, _, status = @page.search('//tbody/tr')[0].search('td')
+
+        if status.text =~ /^[0-9A-Z]{8}+$/
           code = status.text
           break
-        elsif status.text == 'エラー'
+        elsif status.text =~ /エラー/
           raise RegistrationError
         end
 
@@ -71,12 +83,10 @@ module Netprint
       code
     end
 
-    def url
-      URL.new(@session_id, userid, password)
-    end
-
     def mechanize
       @mechanize ||= Mechanize.new
+      @mechanize.ssl_version = :TLSv1
+      @mechanize
     end
   end
 end

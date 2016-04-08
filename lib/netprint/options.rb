@@ -13,14 +13,14 @@ module Netprint
     end
 
     def apply(form)
-      check_radiobutton(form, 'papersize',    options[:paper_size])
-      check_radiobutton(form, 'color',        options[:color])
-      check_radiobutton(form, 'number',       options[:code_type])
-      check_radiobutton(form, 'secretcodesw', options[:secret_code] =~ /^\d{4}$/ ? '1' : '0')
-      check_radiobutton(form, 'mailsw',       options[:email] ? '1' : '0')
+      check_radiobutton(form, 'yus-size',       options[:paper_size])
+      check_radiobutton(form, 'iro-cl',         options[:color])
+      check_radiobutton(form, 'yyk-type-cl',    options[:code_type])
+      check_radiobutton(form, 'pin-num-set-fl', options[:secret_code] =~ /^\d{4}$/ ? '1' : '0')
+      check_radiobutton(form, 'notice-onoff',   options[:email] ? '1' : '0')
 
-      form['secretcode'] = options[:secret_code] if options[:secret_code] =~ /^\d{4}$/
-      form['mailaddr']   = options[:email]       if options[:email]
+      form['pin-no']         = options[:secret_code] if options[:secret_code] =~ /^\d{4}$/
+      form['mail-adr-to-tx'] = options[:email]       if options[:email]
     end
 
     private

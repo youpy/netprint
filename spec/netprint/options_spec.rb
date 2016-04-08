@@ -13,11 +13,11 @@ describe Options do
     context 'default' do
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::A4)
-        form.should be_checked('color',        COLOR::BW)
-        form.should be_checked('number',       CODE_TYPE::ALNUM)
-        form.should be_checked('secretcodesw', '0')
-        form.should be_checked('mailsw',       '0')
+        form.should be_checked('yus-size', PAPERSIZE::A4)
+        form.should be_checked('iro-cl', COLOR::BW)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        form.should be_checked('pin-num-set-fl', '0')
+        form.should be_checked('notice-onoff', '0')
 
         form.should_not_receive(:[]=)
 
@@ -30,13 +30,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::A4)
-        form.should be_checked('color',        COLOR::BW)
-        form.should be_checked('number',       CODE_TYPE::ALNUM)
-        form.should be_checked('secretcodesw', '1')
-        form.should be_checked('mailsw',       '0')
+        form.should be_checked('yus-size', PAPERSIZE::A4)
+        form.should be_checked('iro-cl', COLOR::BW)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        form.should be_checked('pin-num-set-fl', '1')
+        form.should be_checked('notice-onoff', '0')
 
-        form.should_receive(:[]=).with('secretcode', '0123')
+        form.should_receive(:[]=).with('pin-no', '0123')
 
         subject.apply(form)
       end
@@ -47,13 +47,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::A4)
-        form.should be_checked('color',        COLOR::BW)
-        form.should be_checked('number',       CODE_TYPE::ALNUM)
-        form.should be_checked('secretcodesw', '0')
-        form.should be_checked('mailsw',       '1')
+        form.should be_checked('yus-size', PAPERSIZE::A4)
+        form.should be_checked('iro-cl', COLOR::BW)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        form.should be_checked('pin-num-set-fl', '0')
+        form.should be_checked('notice-onoff', '1')
 
-        form.should_receive(:[]=).with('mailaddr', 'test@example.com')
+        form.should_receive(:[]=).with('mail-adr-to-tx', 'test@example.com')
 
         subject.apply(form)
       end
@@ -64,11 +64,11 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::B4)
-        form.should be_checked('color',        COLOR::BW)
-        form.should be_checked('number',       CODE_TYPE::ALNUM)
-        form.should be_checked('secretcodesw', '0')
-        form.should be_checked('mailsw',       '0')
+        form.should be_checked('yus-size', PAPERSIZE::B4)
+        form.should be_checked('iro-cl', COLOR::BW)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        form.should be_checked('pin-num-set-fl', '0')
+        form.should be_checked('notice-onoff', '0')
 
         form.should_not_receive(:[]=)
 
@@ -81,11 +81,11 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::A4)
-        form.should be_checked('color',        COLOR::COLOR)
-        form.should be_checked('number',       CODE_TYPE::ALNUM)
-        form.should be_checked('secretcodesw', '0')
-        form.should be_checked('mailsw',       '0')
+        form.should be_checked('yus-size', PAPERSIZE::A4)
+        form.should be_checked('iro-cl', COLOR::COLOR)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        form.should be_checked('pin-num-set-fl', '0')
+        form.should be_checked('notice-onoff', '0')
 
         form.should_not_receive(:[]=)
 
@@ -98,11 +98,11 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::A4)
-        form.should be_checked('color',        COLOR::BW)
-        form.should be_checked('number',       CODE_TYPE::NUM)
-        form.should be_checked('secretcodesw', '0')
-        form.should be_checked('mailsw',       '0')
+        form.should be_checked('yus-size', PAPERSIZE::A4)
+        form.should be_checked('iro-cl', COLOR::BW)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::NUM)
+        form.should be_checked('pin-num-set-fl', '0')
+        form.should be_checked('notice-onoff', '0')
 
         form.should_not_receive(:[]=)
 
@@ -123,14 +123,14 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('papersize',    PAPERSIZE::B5)
-        form.should be_checked('color',        COLOR::SELECT_WHEN_PRINT)
-        form.should be_checked('number',       CODE_TYPE::NUM)
-        form.should be_checked('secretcodesw', '1')
-        form.should be_checked('mailsw',       '1')
+        form.should be_checked('yus-size', PAPERSIZE::B5)
+        form.should be_checked('iro-cl', COLOR::SELECT_WHEN_PRINT)
+        form.should be_checked('yyk-type-cl', CODE_TYPE::NUM)
+        form.should be_checked('pin-num-set-fl', '1')
+        form.should be_checked('notice-onoff', '1')
 
-        form.should_receive(:[]=).with('secretcode', '0987')
-        form.should_receive(:[]=).with('mailaddr',   'foo@example.com')
+        form.should_receive(:[]=).with('pin-no', '0987')
+        form.should_receive(:[]=).with('mail-adr-to-tx',   'foo@example.com')
 
         subject.apply(form)
       end

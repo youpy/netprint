@@ -1,0 +1,366 @@
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Date: Thu, 18 Oct 2012 08:57:07 GMT
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+ 
+
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+  <title>&#12493;&#12483;&#12488;&#12503;&#12522;&#12531;&#12488;</title>
+  <link class="component" href="/usr/a4j/s/3_3_1.SP3org/richfaces/renderkit/html/css/basic_classes.xcss/DATB/eAELXT5DOhSIAQ!sA18_.seam" rel="stylesheet" type="text/css" /><link class="component" href="/usr/a4j/s/3_3_1.SP3org/richfaces/renderkit/html/css/extended_classes.xcss/DATB/eAELXT5DOhSIAQ!sA18_.seam" media="rich-extended-skinning" rel="stylesheet" type="text/css" /><script src="/usr/a4j/g/3_3_1.SP3org.ajax4jsf.javascript.AjaxScript.seam" type="text/javascript"></script><script type="text/javascript">window.RICH_FACES_EXTENDED_SKINNING_ON=true;</script><script src="/usr/a4j/g/3_3_1.SP3org/richfaces/renderkit/html/scripts/skinning.js.seam" type="text/javascript"></script><link rel="stylesheet" href="/css/normalize-2.1.1.css" />
+  <link rel="stylesheet" href="/css/jquery-ui-1.10.4.xuxbasic.css" />
+  <link rel="stylesheet" href="/css/jquery-xux-0.63.3.basic.css" />
+  <link rel="stylesheet" href="/css/extra.css" />
+  <!--[if IE 7]><link rel="stylesheet" href="/css/IE7-support.css"/><![endif]-->
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv-3.6.2.js"></script>
+  <![endif]-->
+  <!-- jQuery Start -->
+  <script src="/js/jquery-1.10.2.js"></script>
+  <!-- jQuery End -->
+  <!-- FX's common Start -->
+  <script src="/js/jquery-ui-1.10.4.xuxbasic.js"></script>
+  <script src="/js/jquery-xux-0.63.3.basic.js"></script>
+  <!-- FX's common End -->
+  <!-- FX's LocaleScript Replace Start -->
+  <script src="/js/jquery-ui-ja-1.10.4.xuxbasic.js"></script>
+  <script src="/js/jquery-xux-ja-0.63.3.basic.js"></script>
+  <!-- FX's LocaleScript Replace End -->
+  <!-- FX 共通JS Begin -->
+  <script src="/js/text_over.js"></script>
+  <script>
+  var selectedNavi = "0";
+  //<![CDATA[
+  $(function() {
+    //ログイン・ログアウト
+    $("header").xuxHeader({
+      loginout: true, //true or false
+      login: function() {
+        // ログインアクション
+      },
+      logout: function() {
+        // ログアウトアクション
+      }
+    });
+
+    $(function() { //バウンディングBOX
+      $("article").xuxBoundingBox(); 
+      $("body").xuxPage(); 
+    });
+
+    //クローバルナビ
+    $(function() { 
+      $("body").xuxApplyBoxAndLayout();
+      var arr = []; //クローバルナビ-ボタンカラー
+      arr[selectedNavi] = "selected";
+      $("#navigation").xuxNavigationBar({
+        itemStates: arr
+      });
+    });
+  })
+
+  $(function() { //ボタンデザイン(ボタンの色は｢xux-type-default｣でクラス指定。)
+    $(".xbtn").xuxButton();
+    $(".xbtn-s").xuxButton({
+      size: "small"
+    });
+  });
+
+  $(function() { //ラジオボタン
+    $(".radio").xuxRadioBox({
+      itemLayout: "horizontal"
+    });
+  });
+
+  $(function() { //テキストエリア
+    $(".txtarea").xuxTextFieldBox();
+    $(".txtarea-s").xuxTextFieldBox({
+      size: "small"
+    });
+  }); 
+
+  $(function() { //パスワードエリア
+    $(".passarea").xuxPasswordFieldBox();
+    $(".passarea-s").xuxPasswordFieldBox({
+      size: "small"
+    });
+  }); 
+
+  $(function() { //日付入力
+    $("section").first().children("div").xuxHorizontalLayout();
+    $.each(["large", "normal", "small"], function(index, value) {
+      $("#" + value).xuxTextFieldBox({
+        size: value
+      }).find(":text").xuxDatepicker({
+        dateFormat: "yy/mm/dd"
+      });
+    });
+    $("#radioBox").xuxRadioBox().find(":radio").click(function(e) {
+      $("#large, #normal, #small").find(":text")
+        .xuxDatepicker("option", "dateFormat", e.target.value);
+    });
+    $("#buttonBox").xuxButtonBox()
+    $("article").xuxBoundingBox()
+  });
+
+  $(function() { //チェックボックス
+    $(".checkbox").xuxCheckboxBox({
+      itemLayout: "horizontal"
+    });
+  });
+  //]]>
+  </script>
+  <!-- FX 共通JS End -->
+  <!-- APL Common Start -->
+  <script src="/js/nps_aplcommons.js"></script>
+  <!-- APL Common End -->
+</head>
+
+<body id="body">
+
+  <!-- ヘッダ部 Start --><?xml version="1.0" encoding="UTF-8"?>
+
+  
+  <script>
+  $(document).ready(function() { //画面描画 
+    setTimeout(function() {
+          $('div[id=all-cover]').hide();
+          }, 0);
+  });
+  </script>
+  <div id="all-cover" style="display:block;position: absolute;background-color:white; top: 0; bottom: 0; left: 0; right: 0; margin: auto; width: 100%; height: 100%;opacity: 1; filter: alpha(opacity=100); -moz-opacity:1;z-index:998;"></div>
+  
+  <header>
+    <a href="#" title="Home"><img src="/img/xux_nps_logo.png" class="xux-nps-logo" /></a>
+    <nav class="txt-lightgray txt12">
+      <span class="txt-bold ml17"></span> - <span id="log-out"><a href="#" onclick="NPS.app.commons.eventHandler.logout()">&#12525;&#12464;&#12450;&#12454;&#12488;</a></span>
+    </nav>
+  </header>
+  <nav class="has-layout-true" style="">
+    <ul class="nav-position" id="navigation">
+      <li><a href="#" onclick="NPS.app.commons.eventHandler.endUserFile();">&#12501;&#12449;&#12452;&#12523;&#30331;&#37682;&#12539;&#19968;&#35239;</a></li>
+      <li><a href="#" onclick="NPS.app.commons.eventHandler.endUserFree();">&#26009;&#37329;&#34920;&#12539;&#24215;&#33303;&#26908;&#32034;</a></li>
+      <li><a href="#" onclick="NPS.app.commons.eventHandler.endUserQuestion();">FAQ&#12539;&#12362;&#21839;&#12356;&#21512;&#12431;&#12379;</a></li>
+      <li><a href="#" onclick="NPS.app.commons.eventHandler.endUserAcountSet();">&#12450;&#12459;&#12454;&#12531;&#12488;&#35373;&#23450;</a></li>
+    </ul>
+  </nav>
+  <div style="display:none">
+<form id="j_id7" name="j_id7" method="post" action="/usr/web/auth/NPFL0010.seam" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_id7" value="j_id7" />
+<input type="submit" name="j_id7:j_id8" value="" class="nps-header-logout-btn" /><input type="submit" name="j_id7:j_id9" value="" class="nps-header-enduser-file" /><input type="submit" name="j_id7:j_id10" value="" class="nps-header-enduser-free" /><input type="submit" name="j_id7:j_id11" value="" class="nps-header-enduser-question" /><input type="submit" name="j_id7:j_id12" value="" class="nps-header-enduser-user" /><input type="hidden" name="controlParamKey" value="foo" />
+<input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="foo" autocomplete="off" />
+</form>
+  </div> <!-- ヘッダー部をインクルードする指定です -->
+  <!-- ヘッダ部 End -->
+
+  <!-- メイン部 Start -->
+  <main>
+  <article class="has-layout-true">
+  <section>
+    <script>
+      <!-- 個別JS移動不可 -->
+      var syouRate = 0.00;
+      var srvMemType = "";
+      if (srvMemType == "2") {
+        $("#navigation").xuxNavigationBar({
+              itemStates: [,"disabled","disabled",]
+              });
+        NPS.app.commons.eventHandler.endUserFree = function() {return;};
+        NPS.app.commons.eventHandler.endUserQuestion = function() {return;};
+      }
+    </script>
+    <script src="/js/NPFL0010.js"></script>
+<form id="NPFL0010" name="NPFL0010" method="post" action="/usr/web/auth/NPFL0010.seam" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="NPFL0010" value="NPFL0010" />
+
+      <div id="style-h2">
+        <img src="/img/icon_010.png" class="fll mr5" />
+        <h2 class="mt2 txt-gray pt7 txt20">&#12501;&#12449;&#12452;&#12523;&#30331;&#37682;&#24773;&#22577;</h2>
+      </div>
+      
+      <div class="flr pt-20 clearfix"><button type="button" class="xbtn-s ie7btn4" onclick="document.getElementById('logout-btn').click();">&#12525;&#12464;&#12450;&#12454;&#12488;</button></div><?xml version="1.0" encoding="UTF-8"?>
+
+  <article style="display:none" id="errMsgArea" class="xux-type-fault message-fault file message-fault-txt clb mt10">
+    <ul id="svErrMsg">
+    </ul>
+    <ul id="clErrMsg">
+    </ul>
+    <ul id="clCustErrMsg">
+    </ul>
+  </article>
+
+      <div class="ie7w965p"></div>
+      <section class="fll column3-1"><h3>&#12501;&#12449;&#12452;&#12523;&#12398;&#30331;&#37682;</h3>
+        <div class="mb4"><a href="#" onclick="document.getElementById('create-document').click();"><img src="/img/bt-register-document_normal.png" /></a></div>
+        <div class="mb4"><a href="#" onclick="document.getElementById('create-image').click();"><img src="/img/bt-register-photo_normal.png" /></a></div>
+      </section>
+
+      <section class="fll column3-2"><h3>&#12362;&#30693;&#12425;&#12379;</h3>
+        <div class="txt12 link_textarea3 textarea-font file_name">
+            2016/04/01<br />
+            2016&#24180;4&#26376;&#12513;&#12531;&#12486;&#12490;&#12531;&#12473;&#12398;&#12362;&#30693;&#12425;&#12379;<br /><br />2016年4月のメンテナンス日時は、以下の通りです。<br><br>■2016年4月22日（金）　1:00～6:00<br><br>この時間帯のファイル登録やプリントはできません。<br>ご迷惑をお掛けいたしますがよろしくお願いいたします。<br />
+            <a href="" target="_blank"></a><br />
+            <br /><br />
+        </div>
+      </section>
+
+      <section class="fll column3-3">
+        <h3>&#12501;&#12449;&#12452;&#12523;&#12398;&#30331;&#37682;&#29366;&#27841;</h3>
+        <dl class="file-info n-txt">
+          <dt></dt>
+          <dd></dd>
+          <dt>&#30331;&#37682;&#12501;&#12449;&#12452;&#12523;&#25968; &#65306; </dt>
+          <dd>0</dd>
+          <dt>&#12501;&#12457;&#12523;&#12480;&#20351;&#29992;&#37327; &#65306; </dt><dd>0KB</dd>
+          <dt>&#12501;&#12457;&#12523;&#12480;&#20351;&#29992;&#21487;&#33021;&#37327; &#65306; </dt>
+          <dd>10,240KB</dd>
+          <dt>&#12501;&#12457;&#12523;&#12480;&#20351;&#29992;&#29575; &#65306; </dt>
+          <dd>
+            <div class="fll">0.00% </div>
+            <div id="used_rate" class="fll"></div>
+          </dd>
+        </dl>
+      </section><?xml version="1.0" encoding="UTF-8"?>
+
+
+  <script>
+    $(function() { //テーブルのデコレーション
+      var tableId = "decoratedTable1";
+      var curPage = 1;
+      $("#"+tableId).xuxDecoratedTable({
+
+        pageNavigationPosition: "both",
+        clear: true,
+        size: "full",
+
+        type: null,
+        disabled: true,
+        horizontalLayout: "center",
+
+        itemNumbers: true,
+        currentPage: curPage,
+        //maxPage: 10,
+        displayPages: 1,
+        itemsPerPage: 10,
+        totalItems: 0,
+        firstPage: function (event){
+          //console.log("firstPage");
+          $(".firstPage").click();
+        },
+        lastPage: function (event){
+          //console.log("lastPage");
+          $(".lastPage").click();
+        },
+        previousPage: function (event){
+          //console.log("previousPage");
+          $(".prevPage").click();
+        },
+        nextPage: function (event){
+          //console.log("nextPage");
+          $(".nextPage").click();
+        },
+        numberedPage:  function (event, data){
+        //console.log("numberedPage");
+        },
+        sortOptions:{column:0, order:"asc"},
+          selectHeader:function(event, ui){
+          $(this).xuxTable("option", "sortOptions", {column:ui.column, order:ui.newOrder});
+        }
+      });
+
+      var buttonBox = $("#decoratedTable1").xuxDecoratedTable("buttonBox"); //テーブル上部ボタン
+      buttonBox.xuxButtonBox("disable");
+      buttonBox.xuxButtonBox("enable");
+
+      var pageNavigation = $("#decoratedTable1").xuxDecoratedTable("pageNavigation");
+      pageNavigation.xuxPageNavigation("option", "currentPage", curPage);
+      pageNavigation.xuxPageNavigation("refresh");
+
+    });
+  </script>
+
+  <table style="display:none">
+    <tr>
+      <td align="right">
+        <!-- 前ページへのページング -->
+        <!-- 次ページへのページング -->
+      </td>
+    </tr>
+  </table>
+
+      <section id="decoratedTable1" class="clb">
+        <p class="n-txt m0 pt20 pb10" style="*zoom:1">&#8251;&#12503;&#12522;&#12531;&#12488;&#20104;&#32004;&#30058;&#21495;&#12398;&#30330;&#34892;&#24460;&#12399;&#24517;&#12378;&#21491;&#31471;&#12398;[&#35443;&#32048;]&#12434;&#25276;&#12375;&#12390;&#12289;&#30331;&#37682;&#20869;&#23481;&#12434;&#30906;&#35469;&#12375;&#12390;&#12363;&#12425;&#12362;&#24215;&#12391;&#12503;&#12522;&#12531;&#12488;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</p>
+        <div class="v-align ie78w600">
+          <div class="fll"><button type="button" onclick="document.getElementById('reload').click();" class="xbtn-s xux-type-default ie7btn13">&#26368;&#26032;&#24773;&#22577;&#12395;&#26356;&#26032;</button><button type="button" id="del-btn" onclick="document.getElementById('delete').click();" class="xbtn-s ie7btn14">&#12501;&#12449;&#12452;&#12523;&#21066;&#38500;</button></div>
+          <div class="flr ie78fpp ie7zi1"><label class="ie8t-8 ie7_label_position">&#19968;&#35239;&#20214;&#25968; </label><select id="display-max-rows" name="display-max-rows" size="1">	<option value="10" selected="selected">10&#20214;</option>
+	<option value="30">30&#20214;</option>
+	<option value="50">50&#20214;</option>
+</select></div>
+        </div><span id="a4j-table">
+        <table class="file-details width910 table_layout_fixed">
+          <thead>
+            <tr>
+              <th width="3.5%">
+                  <input name="#" type="checkbox" disabled="disabled" />
+              </th>
+              <th width="27%">&#12501;&#12449;&#12452;&#12523;&#21517;</th>
+              <th width="15%">&#12503;&#12522;&#12531;&#12488;&#20104;&#32004;&#30058;&#21495;</th> 
+              <th width="11.5%">&#12501;&#12449;&#12452;&#12523;&#12469;&#12452;&#12474;</th>
+              <th width="9%">&#29992;&#32025;&#12469;&#12452;&#12474;</th>
+              <th width="6%">&#12506;&#12540;&#12472;</th>
+              <th width="11.5%">&#30331;&#37682;&#26085;&#26178;</th>
+              <th width="11.5%">&#26377;&#21177;&#26399;&#38480;</th>
+              <th width="5%"> </th>
+            </tr> 
+          </thead>
+
+          <tbody>
+            <!--　実績がある場合は削除　ここから　-->
+              <tr>
+                <td colspan="9">&#12501;&#12449;&#12452;&#12523;&#12364;&#30331;&#37682;&#12373;&#12428;&#12390;&#12356;&#12414;&#12379;&#12435;&#12290;(323)</td>
+              </tr>
+            <!--　実績がある場合は削除　ここまで　--> 
+
+            <!--　実績がない場合は削除　ここから　-->
+            <!--　実績がない場合は削除　ここまで　--> 
+          </tbody>
+        </table></span>
+      </section><!-- //decoratedTable1 -->
+      <div style="display:none"><input id="create-document" type="submit" name="create-document" value="" /><input id="create-image" type="submit" name="create-image" value="" /><input id="delete" type="submit" name="delete" value="" /><input id="reload" type="submit" name="reload" value="" /><input id="logout-btn" type="submit" name="logout-btn" value="" />
+      </div><input type="hidden" name="controlParamKey" value="xxx" />
+<input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="yyy" autocomplete="off" />
+</form>
+<form id="j_id176" name="j_id176" method="post" action="/usr/web/auth/NPFL0010.seam" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_id176" value="j_id176" />
+<span style="display:none;" id="j_id176:j_id178"><script type="text/javascript">
+A4J.AJAX.StopPoll('j_id176:j_id178');
+</script></span><input type="hidden" name="controlParamKey" value="fjX+VLJuERGEXQUOY5JHsRRmqMIoapxMwnV4/z8f4zy8wD6blcCovIdmwZB94WigfdcIee83HxSNrDzKmvITN2KIhSNR2szy7eNuSNOM9DBZd4GkCuGQGV6qNpXhm6mriQ5TIHGjw7k1XVDb29YWY1LRmOTrMOWcDw48oKEZAXlCgsJ9VZo53pnfvErMnwrpJ7BFIK9T32uYIsdJ42a/QBsWvRdMfj6uOdY0XMGdKOnc2PuOELWrBtcEK/Tp21MJ9WwkiiTmuERKjrTrQAsVGRS9XiHm6d5V43DW/yIjH6H0Rof54KU2QCWHKYwsYV4QSxvFdm/Vo1n9BgyXQ6kHAlLbK44r8KqLokOWmUFVqpJMjlLVAowGBRJu7BUfHWJHkT0tgpgouEIUPv5elUjfHMaNE/wAH6zWnZ0oN+AvZC4=" />
+<input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+  </section>
+  </article>
+  </main>
+  <!-- メイン部 End -->
+
+  <!-- フッター部 Start --><?xml version="1.0" encoding="UTF-8"?>
+
+
+<footer class="xux-footer">&copy;Fuji Xerox Co., Ltd. 1995-2015</footer>
+<script>
+/*   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3871039-2', 'auto');
+  ga('send', 'pageview');
+ */
+</script> <!-- フッター部をインクルードする指定 -->
+  <!-- フッター部 End -->
+</body>
+</html>
