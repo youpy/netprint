@@ -8,7 +8,7 @@ describe Agent do
     @agent = Agent.new('user_id', 'password')
 
     stub_request(:get, 'https://www.printing.ne.jp/usr/web/NPCM0010.seam').
-      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../login.html')).read)
+      to_return(read_fixture_file('login.html'))
 
     stub_request(:post, 'https://www.printing.ne.jp/usr/web/NPCM0010.seam').
       with(body: {
@@ -20,7 +20,7 @@ describe Agent do
              'javax.faces.ViewState' => 'bar'
            }
           ).
-      to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list_empty.html')).read)
+      to_return(read_fixture_file('list_empty.html'))
   end
 
   it 'should login' do
@@ -42,10 +42,10 @@ describe Agent do
                'javax.faces.ViewState' => 'yyy'
              }
             ).
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../upload.html')).read)
+        to_return(read_fixture_file('upload.html'))
 
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0020.seam').
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list_processing.html')).read)
+        to_return(read_fixture_file('list_processing.html'))
 
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0010.seam').
         with(body: {
@@ -56,7 +56,7 @@ describe Agent do
                'javax.faces.ViewState' => 'yyy'
              }
             ).
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list_processed.html')).read)
+        to_return(read_fixture_file('list_processed.html'))
 
       filename = File.expand_path(pdf_filename)
       @agent.login
@@ -75,10 +75,10 @@ describe Agent do
                'javax.faces.ViewState' => 'yyy'
              }
             ).
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../upload.html')).read)
+        to_return(read_fixture_file('upload.html'))
 
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0020.seam').
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list_processing.html')).read)
+        to_return(read_fixture_file('list_processing.html'))
 
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0010.seam').
         with(body: {
@@ -89,7 +89,7 @@ describe Agent do
                'javax.faces.ViewState' => 'yyy'
              }
             ).
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../list_error.html')).read)
+        to_return(read_fixture_file('list_error.html'))
 
       filename = File.expand_path(pdf_filename)
       @agent.login
@@ -109,10 +109,10 @@ describe Agent do
                'javax.faces.ViewState' => 'yyy'
              }
             ).
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../upload.html')).read)
+        to_return(read_fixture_file('upload.html'))
 
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0020.seam').
-        to_return(open(File.expand_path(File.dirname(__FILE__) + '/../upload_error.html')).read)
+        to_return(read_fixture_file('upload_error.html'))
 
       filename = File.expand_path(pdf_filename)
       @agent.login
@@ -124,13 +124,13 @@ describe Agent do
   end
 
   context 'filename is ASCII only' do
-    let(:pdf_filename) { File.dirname(__FILE__) + '/../foo.pdf' }
+    let(:pdf_filename) { fixture_file('foo.pdf') }
 
     it_should_behave_like '#upload'
   end
 
   context 'filename has non-ASCII characters' do
-    let(:pdf_filename) { File.dirname(__FILE__) + '/../あいうえお.pdf' }
+    let(:pdf_filename) { fixture_file('あいうえお.pdf') }
 
     it_should_behave_like '#upload'
   end

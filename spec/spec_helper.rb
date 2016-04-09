@@ -18,6 +18,14 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  def fixture_file(name)
+    File.expand_path(File.dirname(__FILE__) + '/fixtures/' + name)
+  end
+
+  def read_fixture_file(name)
+    open(fixture_file(name)).read
+  end
 end
 
 RSpec::Matchers.define :be_checked do |name, value|
