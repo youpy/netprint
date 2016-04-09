@@ -36,5 +36,5 @@ rescue Docopt::Exit => e
 rescue Netprint::UploadError => e
   abort '%s: %s' % [$0, e.message]
 rescue Netprint::RegistrationError => e
-  abort '%s: An registration error occured' % $0
+  abort '%s: A registration error occured' % $0
 end
