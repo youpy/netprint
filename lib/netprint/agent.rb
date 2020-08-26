@@ -89,7 +89,6 @@ module Netprint
 
     def mechanize
       @mechanize ||= Mechanize.new
-      @mechanize.ssl_version = :TLSv1
       @mechanize
     end
   end
