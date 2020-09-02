@@ -15,8 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Netprint::VERSION
 
-  gem.add_development_dependency('rspec', ['~> 2.8.0'])
-  gem.add_development_dependency('rake', '< 11.0')
+  gem.add_development_dependency('rspec', ['~> 3.9.0'])
+  gem.add_development_dependency('rake', '>= 12.3.3')
   gem.add_development_dependency('webmock')
   gem.add_dependency('mechanize', '2.7.0')
   gem.add_dependency('docopt')

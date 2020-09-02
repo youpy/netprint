@@ -23,16 +23,16 @@ describe Agent do
       to_return(read_fixture_file('list_empty.html'))
   end
 
-  it 'should login' do
-    @agent.should_not be_login
+  it 'logins' do
+    expect(@agent).not_to be_login
 
     @agent.login
 
-    @agent.should be_login
+    expect(@agent).to be_login
   end
 
   shared_examples_for '#upload' do
-    it 'should upload' do
+    it 'uploads' do
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0010.seam').
         with(body: {
                'NPFL0010' => 'NPFL0010',
@@ -62,10 +62,10 @@ describe Agent do
       @agent.login
 
       code = @agent.upload(filename)
-      code.should match(/^[0-9A-Z]{8}$/)
+      expect(code).to match(/^[0-9A-Z]{8}$/)
     end
 
-    it 'should handle registration error' do
+    it 'handles registration error' do
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0010.seam').
         with(body: {
                'NPFL0010' => 'NPFL0010',
@@ -94,12 +94,12 @@ describe Agent do
       filename = File.expand_path(pdf_filename)
       @agent.login
 
-      lambda {
+      expect {
         @agent.upload(filename)
-      }.should raise_error(RegistrationError)
+      }.to raise_error(RegistrationError)
     end
 
-    it 'should handle upload error' do
+    it 'handles upload error' do
       stub_request(:post, 'https://www.printing.ne.jp/usr/web/auth/NPFL0010.seam').
         with(body: {
                'NPFL0010' => 'NPFL0010',
@@ -117,9 +117,9 @@ describe Agent do
       filename = File.expand_path(pdf_filename)
       @agent.login
 
-      lambda {
+      expect {
         @agent.upload(filename)
-      }.should raise_error(UploadError, 'error message')
+      }.to raise_error(UploadError, 'error message')
     end
   end
 

@@ -9,7 +9,6 @@ require 'webmock/rspec'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
 
@@ -31,8 +30,8 @@ end
 RSpec::Matchers.define :be_checked do |name, value|
   match do |form|
     radiobutton = Object.new
-    radiobutton.should_receive(:check)
+    expect(radiobutton).to receive(:check)
 
-    form.should_receive(:radiobutton_with).with(:name => name, :value => value).and_return(radiobutton)
+    expect(form).to receive(:radiobutton_with).with(:name => name, :value => value).and_return(radiobutton)
   end
 end

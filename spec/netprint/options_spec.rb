@@ -13,13 +13,13 @@ describe Options do
     context 'default' do
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::A4)
-        form.should be_checked('iro-cl', COLOR::BW)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
-        form.should be_checked('pin-num-set-fl', '0')
-        form.should be_checked('notice-onoff', '0')
+        expect(form).to be_checked('yus-size', PAPERSIZE::A4)
+        expect(form).to be_checked('iro-cl', COLOR::BW)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        expect(form).to be_checked('pin-num-set-fl', '0')
+        expect(form).to be_checked('notice-onoff', '0')
 
-        form.should_not_receive(:[]=)
+        expect(form).not_to receive(:[]=)
 
         subject.apply(form)
       end
@@ -30,13 +30,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::A4)
-        form.should be_checked('iro-cl', COLOR::BW)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
-        form.should be_checked('pin-num-set-fl', '1')
-        form.should be_checked('notice-onoff', '0')
+        expect(form).to be_checked('yus-size', PAPERSIZE::A4)
+        expect(form).to be_checked('iro-cl', COLOR::BW)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        expect(form).to be_checked('pin-num-set-fl', '1')
+        expect(form).to be_checked('notice-onoff', '0')
 
-        form.should_receive(:[]=).with('pin-no', '0123')
+        expect(form).to receive(:[]=).with('pin-no', '0123')
 
         subject.apply(form)
       end
@@ -47,13 +47,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::A4)
-        form.should be_checked('iro-cl', COLOR::BW)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
-        form.should be_checked('pin-num-set-fl', '0')
-        form.should be_checked('notice-onoff', '1')
+        expect(form).to be_checked('yus-size', PAPERSIZE::A4)
+        expect(form).to be_checked('iro-cl', COLOR::BW)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        expect(form).to be_checked('pin-num-set-fl', '0')
+        expect(form).to be_checked('notice-onoff', '1')
 
-        form.should_receive(:[]=).with('mail-adr-to-tx', 'test@example.com')
+        expect(form).to receive(:[]=).with('mail-adr-to-tx', 'test@example.com')
 
         subject.apply(form)
       end
@@ -64,13 +64,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::B4)
-        form.should be_checked('iro-cl', COLOR::BW)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
-        form.should be_checked('pin-num-set-fl', '0')
-        form.should be_checked('notice-onoff', '0')
+        expect(form).to be_checked('yus-size', PAPERSIZE::B4)
+        expect(form).to be_checked('iro-cl', COLOR::BW)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        expect(form).to be_checked('pin-num-set-fl', '0')
+        expect(form).to be_checked('notice-onoff', '0')
 
-        form.should_not_receive(:[]=)
+        expect(form).not_to receive(:[]=)
 
         subject.apply(form)
       end
@@ -81,13 +81,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::A4)
-        form.should be_checked('iro-cl', COLOR::COLOR)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
-        form.should be_checked('pin-num-set-fl', '0')
-        form.should be_checked('notice-onoff', '0')
+        expect(form).to be_checked('yus-size', PAPERSIZE::A4)
+        expect(form).to be_checked('iro-cl', COLOR::COLOR)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::ALNUM)
+        expect(form).to be_checked('pin-num-set-fl', '0')
+        expect(form).to be_checked('notice-onoff', '0')
 
-        form.should_not_receive(:[]=)
+        expect(form).not_to receive(:[]=)
 
         subject.apply(form)
       end
@@ -98,13 +98,13 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::A4)
-        form.should be_checked('iro-cl', COLOR::BW)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::NUM)
-        form.should be_checked('pin-num-set-fl', '0')
-        form.should be_checked('notice-onoff', '0')
+        expect(form).to be_checked('yus-size', PAPERSIZE::A4)
+        expect(form).to be_checked('iro-cl', COLOR::BW)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::NUM)
+        expect(form).to be_checked('pin-num-set-fl', '0')
+        expect(form).to be_checked('notice-onoff', '0')
 
-        form.should_not_receive(:[]=)
+        expect(form).not_to receive(:[]=)
 
         subject.apply(form)
       end
@@ -123,14 +123,14 @@ describe Options do
 
       it do
         form = Object.new
-        form.should be_checked('yus-size', PAPERSIZE::B5)
-        form.should be_checked('iro-cl', COLOR::SELECT_WHEN_PRINT)
-        form.should be_checked('yyk-type-cl', CODE_TYPE::NUM)
-        form.should be_checked('pin-num-set-fl', '1')
-        form.should be_checked('notice-onoff', '1')
+        expect(form).to be_checked('yus-size', PAPERSIZE::B5)
+        expect(form).to be_checked('iro-cl', COLOR::SELECT_WHEN_PRINT)
+        expect(form).to be_checked('yyk-type-cl', CODE_TYPE::NUM)
+        expect(form).to be_checked('pin-num-set-fl', '1')
+        expect(form).to be_checked('notice-onoff', '1')
 
-        form.should_receive(:[]=).with('pin-no', '0987')
-        form.should_receive(:[]=).with('mail-adr-to-tx',   'foo@example.com')
+        expect(form).to receive(:[]=).with('pin-no', '0987')
+        expect(form).to receive(:[]=).with('mail-adr-to-tx',   'foo@example.com')
 
         subject.apply(form)
       end
