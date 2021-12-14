@@ -1,4 +1,4 @@
-# Netprint  [![Build Status](https://secure.travis-ci.org/youpy/netprint.png)](http://secure.travis-ci.org/youpy/netprint)
+# Netprint [![Ruby](https://github.com/youpy/netprint/actions/workflows/ruby.yml/badge.svg?branch=master)](https://github.com/youpy/netprint/actions/workflows/ruby.yml)
 
 A library and command line tool for using [netprint](https://www.printing.ne.jp/) 
 
